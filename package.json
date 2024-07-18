@@ -2,6 +2,7 @@
   "name": "@conduitxyz/integrations",
   "private": "false",
   "version": "0.0.1",
+  "author": "Conduit XYZ",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
