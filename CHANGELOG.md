@@ -1,5 +1,11 @@
 # @conduitxyz/integrations
 
+## 0.0.4
+
+### Patch Changes
+
+- 26e1836: Add readme
+
 ## 0.0.3
 
 ### Patch Changes
