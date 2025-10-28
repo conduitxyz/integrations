@@ -1,5 +1,12 @@
 # @conduitxyz/integrations
 
+## 0.1.3
+
+### Patch Changes
+
+- c632364: Add comments to NativeCurrency
+- c632364: Add network_type
+
 ## 0.1.2
 
 ### Patch Changes
