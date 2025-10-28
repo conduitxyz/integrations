@@ -1,3 +1,3 @@
-export * from "./errors";
-export * from "./events";
-export * from "./secret";
+export * from "./errors.js";
+export * from "./events.js";
+export * from "./secret.js";

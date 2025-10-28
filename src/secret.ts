@@ -1,4 +1,4 @@
-import { isSecretError } from "./errors";
+import { isSecretError } from "./errors.js";
 
 export const SECRET_HEADER_NAME = "X-Conduit-Integration-Secret";
 
