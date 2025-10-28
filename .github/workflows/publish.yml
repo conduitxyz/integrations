@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  # id-token: write
+  id-token: write
   contents: write
   pull-requests: write
   packages: write
@@ -33,9 +33,6 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install
-
-      # - run: |
-      #     echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Create release pull request or publish to npm
         id: changesets
