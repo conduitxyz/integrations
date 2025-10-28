@@ -4,6 +4,10 @@
   "description": "SDK for Conduit Integrations",
   "license": "MIT",
   "author": "Conduit XYZ Inc.",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "keywords": [],
   "type": "module",
   "exports": {
