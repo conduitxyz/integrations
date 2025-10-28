@@ -142,7 +142,7 @@ export type NativeCurrency = {
    */
   decimals: number;
   /**
-   * Contract address of currency on the settlement layer, I.E. 0x...
+   * Contract address of currency on the settlement layer, I.E. 0x0000000000000000000000000000000000000000
    */
   contract: string;
 };
@@ -164,11 +164,11 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
   /**
    * An identifier for the blockchain.
    */
-  chain_id: number;
+  chain_id: string;
   /**
    * An identifier for the parent blockchain.
    */
-  parent_chain_id: number;
+  parent_chain_id: string;
   /**
    * Specifies the stack type.
    */
@@ -208,7 +208,7 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
   /**
    * A mapping of contract names to their respective addresses
    */
-  contracts: { [key: string]: string };
+  contracts: { [key: string]: `0x${string}` };
   /**
    * Flag to determine if the network is private or not, used to inform partners to hide the network in their app
    */
