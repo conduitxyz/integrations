@@ -1,4 +1,4 @@
-export const IntegrationEventStatusEnum = {
+export const IntegrationStatus = {
   NOT_INSTALLED: "NOT_INSTALLED",
   INSTALLING: "INSTALLING",
   INSTALLED: "INSTALLED",
@@ -7,10 +7,8 @@ export const IntegrationEventStatusEnum = {
   CONFIGURATION_REQUIRED: "CONFIGURATION_REQUIRED",
 } as const;
 
-export type IntegrationEventStatusEnum = typeof IntegrationEventStatusEnum;
-
-export type IntegrationEventStatus =
-  IntegrationEventStatusEnum[keyof IntegrationEventStatusEnum];
+export type IntegrationStatus =
+  (typeof IntegrationStatus)[keyof typeof IntegrationStatus];
 
 type IntegrationEventResponseBase = {
   /**
@@ -20,21 +18,21 @@ type IntegrationEventResponseBase = {
   /**
    * Status to update to internally, Integration.Status is used
    */
-  status: IntegrationEventStatus;
+  status: IntegrationStatus;
 };
 
 type IntegrationEventResponseNotInstalled = IntegrationEventResponseBase & {
   /**
    * Status to update to internally, Integration.Status is used
    */
-  status: IntegrationEventStatusEnum["NOT_INSTALLED"];
+  status: (typeof IntegrationStatus)["NOT_INSTALLED"];
 };
 
 type IntegrationEventResponseInstalling = IntegrationEventResponseBase & {
   /**
    * Status to update to internally, Integration.Status is used
    */
-  status: IntegrationEventStatusEnum["INSTALLING"];
+  status: (typeof IntegrationStatus)["INSTALLING"];
   /**
    * Update ETA in seconds.
    */
@@ -45,7 +43,7 @@ type IntegrationEventResponseInstalled = IntegrationEventResponseBase & {
   /**
    * Status to update to internally, Integration.Status is used
    */
-  status: IntegrationEventStatusEnum["INSTALLED"];
+  status: (typeof IntegrationStatus)["INSTALLED"];
   /**
    * Manage url.
    */
@@ -56,7 +54,7 @@ type IntegrationEventResponseUninstalling = IntegrationEventResponseBase & {
   /**
    * Status to update to internally, Integration.Status is used
    */
-  status: IntegrationEventStatusEnum["UNINSTALLING"];
+  status: (typeof IntegrationStatus)["UNINSTALLING"];
 };
 
 type IntegrationEventResponseConfigurationRequired =
@@ -64,7 +62,7 @@ type IntegrationEventResponseConfigurationRequired =
     /**
      * Status to update to internally, Integration.Status is used
      */
-    status: IntegrationEventStatusEnum["CONFIGURATION_REQUIRED"];
+    status: (typeof IntegrationStatus)["CONFIGURATION_REQUIRED"];
     /**
      * Configuration link to set.
      */
@@ -75,7 +73,7 @@ type IntegrationEventResponseFailedToInstall = IntegrationEventResponseBase & {
   /**
    * Status to update to internally, Integration.Status is used
    */
-  status: IntegrationEventStatusEnum["FAILED_TO_INSTALL"];
+  status: (typeof IntegrationStatus)["FAILED_TO_INSTALL"];
   /**
    * Failure reason.
    */
@@ -96,37 +94,28 @@ export function constructIntegrationEventResponse(
   return data;
 }
 
-export const IntegrationEventTypeEnum = {
+export const EventType = {
   INSTALLED: "INSTALLED",
   UNINSTALLED: "UNINSTALLED",
   NETWORK_UPDATED: "NETWORK_UPDATED",
   NETWORK_DELETED: "NETWORK_DELETED",
 } as const;
 
-export type IntegrationEventTypeEnum = typeof IntegrationEventTypeEnum;
+export type EventType = (typeof EventType)[keyof typeof EventType];
 
-export type IntegrationEventType =
-  IntegrationEventTypeEnum[keyof IntegrationEventTypeEnum];
-
-export const IntegrationEventStackTypeEnum = {
+export const StackType = {
   OPTIMISM: "OPTIMISM",
   ARBITRUM: "ARBITRUM",
 } as const;
 
-export type IntegrationEventStackTypeEnum =
-  typeof IntegrationEventStackTypeEnum;
+export type StackType = (typeof StackType)[keyof typeof StackType];
 
-export const NetworkTypeEnum = {
+export const NetworkType = {
   MAINNET: "MAINNET",
   TESTNET: "TESTNET",
 } as const;
 
-export type NetworkTypeEnum = typeof NetworkTypeEnum;
-
-export type NetworkTypeEnumType = NetworkTypeEnum[keyof NetworkTypeEnum];
-
-export type IntegrationEventStackType =
-  IntegrationEventStackTypeEnum[keyof IntegrationEventStackTypeEnum];
+export type NetworkType = (typeof NetworkType)[keyof typeof NetworkType];
 
 export type NativeCurrency = {
   /**
@@ -148,7 +137,7 @@ export type NativeCurrency = {
 };
 
 type IntegrationEventBase = {
-  event: IntegrationEventType;
+  event: EventType;
   /**
    * A unique identifier for the network.
    */
@@ -160,7 +149,7 @@ type IntegrationEventBase = {
 };
 
 type IntegrationEventInstalledBase = IntegrationEventBase & {
-  event: IntegrationEventTypeEnum["INSTALLED"];
+  event: (typeof EventType)["INSTALLED"];
   /**
    * An identifier for the blockchain.
    */
@@ -172,7 +161,7 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
   /**
    * Specifies the stack type.
    */
-  type: IntegrationEventStackType;
+  type: StackType;
   /**
    * Information about the native currency used in the network.
    */
@@ -208,7 +197,9 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
   /**
    * A mapping of contract names to their respective addresses
    */
-  contracts: { [key: string]: `0x${string}` };
+  contracts: {
+    [key: string]: `0x${string}`;
+  };
   /**
    * Flag to determine if the network is private or not, used to inform partners to hide the network in their app
    */
@@ -216,14 +207,14 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
   /**
    * Type of the network, testnet or mainnet
    */
-  network_type: NetworkTypeEnumType;
+  network_type: NetworkType;
 };
 
 type IntegrationEventInstalledOptimism = IntegrationEventInstalledBase & {
   /**
    * Specifies the stack type.
    */
-  type: IntegrationEventStackTypeEnum["OPTIMISM"];
+  type: (typeof StackType)["OPTIMISM"];
   /**
    * The file path for Optimism contracts
    */
@@ -242,7 +233,7 @@ type IntegrationEventInstalledArbitrum = IntegrationEventInstalledBase & {
   /**
    * Specifies the stack type.
    */
-  type: IntegrationEventStackTypeEnum["ARBITRUM"];
+  type: (typeof StackType)["ARBITRUM"];
   /**
    * The file path for Arbitrum core contracts
    */
@@ -258,7 +249,7 @@ type IntegrationEventInstalled =
   | IntegrationEventInstalledArbitrum;
 
 type IntegrationEventNetworkUpdated = IntegrationEventBase & {
-  event: IntegrationEventTypeEnum["NETWORK_UPDATED"];
+  event: (typeof EventType)["NETWORK_UPDATED"];
   /**
    * The URL of the network's logo
    */
@@ -274,11 +265,11 @@ type IntegrationEventNetworkUpdated = IntegrationEventBase & {
 };
 
 type IntegrationEventUninstalled = IntegrationEventBase & {
-  event: IntegrationEventTypeEnum["UNINSTALLED"];
+  event: (typeof EventType)["UNINSTALLED"];
 };
 
 type IntegrationEventNetworkDeleted = IntegrationEventBase & {
-  event: IntegrationEventTypeEnum["NETWORK_DELETED"];
+  event: (typeof EventType)["NETWORK_DELETED"];
 };
 
 export type IntegrationEvent =
