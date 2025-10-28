@@ -116,13 +116,34 @@ export const IntegrationEventStackTypeEnum = {
 export type IntegrationEventStackTypeEnum =
   typeof IntegrationEventStackTypeEnum;
 
+export const NetworkTypeEnum = {
+  MAINNET: "MAINNET",
+  TESTNET: "TESTNET",
+} as const;
+
+export type NetworkTypeEnum = typeof NetworkTypeEnum;
+
+export type NetworkTypeEnumType = NetworkTypeEnum[keyof NetworkTypeEnum];
+
 export type IntegrationEventStackType =
   IntegrationEventStackTypeEnum[keyof IntegrationEventStackTypeEnum];
 
 export type NativeCurrency = {
+  /**
+   * Name of currency, I.E. Ether
+   */
   name: string;
+  /**
+   * Symbol of currency, I.E. ETH
+   */
   symbol: string;
+  /**
+   * Decimals of currency, I.E. 18
+   */
   decimals: number;
+  /**
+   * Contract address of currency on the settlement layer, I.E. 0x...
+   */
   contract: string;
 };
 
@@ -192,6 +213,10 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
    * Flag to determine if the network is private or not, used to inform partners to hide the network in their app
    */
   private: boolean;
+  /**
+   * Type of the network, testnet or mainnet
+   */
+  network_type: NetworkTypeEnumType;
 };
 
 type IntegrationEventInstalledOptimism = IntegrationEventInstalledBase & {
