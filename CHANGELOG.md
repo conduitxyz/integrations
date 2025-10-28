@@ -1,5 +1,11 @@
 # @conduitxyz/integrations
 
+## 0.0.3
+
+### Patch Changes
+
+- 6ba2d86: Update package.json with files field, fix private flag
+
 ## 0.0.2
 
 ### Patch Changes
