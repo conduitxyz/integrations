@@ -1,6 +1,6 @@
 {
   "name": "@conduitxyz/integrations",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SDK for Conduit Integrations",
   "license": "MIT",
   "author": "Conduit XYZ Inc.",
