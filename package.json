@@ -1,12 +1,15 @@
 {
   "name": "@conduitxyz/integrations",
-  "private": false,
   "version": "0.0.2",
-  "author": "Conduit XYZ",
+  "author": "Conduit XYZ Inc.",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "scripts": {
     "build": "del-cli dist && tsc",
     "prepack": "pnpm run build",
@@ -14,6 +17,11 @@
     "lint": "oxlint",
     "cs": "changeset",
     "cs:version": "changeset version"
+  },
+  "homepage": "https://github.com/conduitxyz/integrations#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conduitxyz/integrations.git"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
