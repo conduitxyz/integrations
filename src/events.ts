@@ -132,6 +132,10 @@ type IntegrationEventBase = {
    * A unique identifier for the network.
    */
   id: string;
+  /**
+   * Installation ID for the integration
+   */
+  installation_id: string;
 };
 
 type IntegrationEventInstalledBase = IntegrationEventBase & {
@@ -184,6 +188,10 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
    * A mapping of contract names to their respective addresses
    */
   contracts: { [key: string]: string };
+  /**
+   * Flag to determine if the network is private or not, used to inform partners to hide the network in their app
+   */
+  private: boolean;
 };
 
 type IntegrationEventInstalledOptimism = IntegrationEventInstalledBase & {
