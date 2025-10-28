@@ -1,5 +1,16 @@
 # @conduitxyz/integrations
 
+## 0.1.0
+
+### Minor Changes
+
+- 8cb0f7d: Module distribution
+
+### Patch Changes
+
+- 26e1836: Add readme
+- 8dd5d5b: Cleanup package.json
+
 ## 0.0.3
 
 ### Patch Changes
