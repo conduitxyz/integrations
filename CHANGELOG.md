@@ -1,5 +1,15 @@
 # @conduitxyz/integrations
 
+## 1.0.0
+
+### Major Changes
+
+- e8a852b: Rename types and enums, cleaning up reduncancy. Prepared for initial release
+
+### Minor Changes
+
+- be952e9: Change types for certain fields, chain_id, parent_chain_id are now strings
+
 ## 0.1.4
 
 ### Patch Changes
