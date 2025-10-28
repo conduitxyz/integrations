@@ -1,7 +1,5 @@
 # @conduitxyz/integrations
 
----
-
 TypeScript SDK for Conduit Integrations
 
 ```bash
