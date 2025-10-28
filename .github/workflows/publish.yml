@@ -34,8 +34,8 @@ jobs:
 
       - run: pnpm install
 
-      - run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+      # - run: |
+      #     echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Create release pull request or publish to npm
         id: changesets
