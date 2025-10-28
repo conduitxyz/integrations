@@ -1,5 +1,11 @@
 # @conduitxyz/integrations
 
+## 0.1.2
+
+### Patch Changes
+
+- ce6b043: Fix publish
+
 ## 0.1.1
 
 ### Patch Changes
