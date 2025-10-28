@@ -29,10 +29,10 @@
     "url": "git+https://github.com/conduitxyz/integrations.git"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.7",
+    "@changesets/cli": "^2.29.7",
     "@total-typescript/tsconfig": "^1.0.4",
     "del-cli": "^7.0.0",
     "oxlint": "^1.24.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.9.3"
   }
 }
