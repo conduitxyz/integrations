@@ -9,6 +9,8 @@ permissions:
   id-token: write
   contents: write
   pull-requests: write
+  packages: write
+  repository-projects: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,11 +19,6 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      packages: write
-      pull-requests: write
-      repository-projects: write
     steps:
       - uses: actions/checkout@v4
 
