@@ -8,12 +8,17 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "del-cli dist && tsc",
+    "prepack": "pnpm run build",
     "release": "pnpm run build && changeset publish",
-    "lint": "tsc"
+    "lint": "oxlint",
+    "cs": "changeset",
+    "cs:version": "changeset version"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
+    "del-cli": "^7.0.0",
+    "oxlint": "^1.24.0",
     "tsup": "^8.1.2",
     "typescript": "^5.5.3"
   }
