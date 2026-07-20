@@ -17,6 +17,10 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Requires manual approval (environment reviewers) before each run.
+    # Also mirrored in the npm trusted publisher config so OIDC tokens
+    # minted outside this environment are rejected by npm.
+    environment: npm-publish
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
