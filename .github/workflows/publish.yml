@@ -6,11 +6,9 @@ on:
       - main
 
 permissions:
-  id-token: write
-  contents: write
-  pull-requests: write
-  packages: write
-  repository-projects: write
+  id-token: write # npm trusted publishing (OIDC)
+  contents: write # changesets: push version commits and tags, create releases
+  pull-requests: write # changesets: open/update the Version Packages PR
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
