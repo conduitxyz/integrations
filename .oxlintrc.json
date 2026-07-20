@@ -4,13 +4,13 @@
     "correctness": "error",
     "suspicious": "error",
     "perf": "error"
-    // "restriction": "warn"
   },
-  "plugins": ["typescript", "unicorn", "react", "oxc", "react-perf", "import"]
-  // "rules": {
-  //   "typescript/consistent-type-definitions": "allow",
-  //   "unicorn/filename-case": ["error", { "case": "kebabCase" }],
-  //   "import/exports-last": "allow",
-  //   "eslint/sort-keys": "allow"
-  // }
+  "plugins": [
+    "typescript",
+    "unicorn",
+    "react",
+    "oxc",
+    "react-perf",
+    "import"
+  ]
 }

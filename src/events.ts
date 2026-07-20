@@ -10,15 +10,38 @@ export const IntegrationStatus = {
 export type IntegrationStatus =
   (typeof IntegrationStatus)[keyof typeof IntegrationStatus];
 
+export type InstallationArtifact = {
+  /**
+   * Display name of the artifact, I.E. "Dashboard"
+   */
+  name: string;
+  /**
+   * Unique key of the artifact, I.E. "dashboard"
+   */
+  key: string;
+  /**
+   * Type of the artifact value.
+   */
+  type: "string" | "address" | "url";
+  /**
+   * Value of the artifact.
+   */
+  value: string;
+};
+
 type IntegrationEventResponseBase = {
   /**
-   * Testnet id.
+   * The network id (slug).
    */
   id: string;
   /**
    * Status to update to internally, Integration.Status is used
    */
   status: IntegrationStatus;
+  /**
+   * A list of artifacts that can be rendered on the dashboard.
+   */
+  artifacts?: InstallationArtifact[];
 };
 
 type IntegrationEventResponseNotInstalled = IntegrationEventResponseBase & {
@@ -139,7 +162,7 @@ export type NativeCurrency = {
 type IntegrationEventBase = {
   event: EventType;
   /**
-   * A unique identifier for the network.
+   * A unique identifier for the network (the network slug).
    */
   id: string;
   /**
@@ -183,17 +206,17 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
    */
   explorer: string;
   /**
-   * The URL of the network's logo
+   * The URL of the network's logo. Omitted when not set.
    */
-  logo_url: string;
+  logo_url?: string;
   /**
-   * The URL of the network's icon
+   * The URL of the network's icon. Omitted when not set.
    */
-  icon_url: string;
+  icon_url?: string;
   /**
-   * The brand color of the network.
+   * The brand color of the network. Omitted when not set.
    */
-  brand_color: string;
+  brand_color?: string;
   /**
    * A mapping of contract names to their respective addresses
    */
@@ -201,13 +224,21 @@ type IntegrationEventInstalledBase = IntegrationEventBase & {
     [key: string]: `0x${string}`;
   };
   /**
-   * Flag to determine if the network is private or not, used to inform partners to hide the network in their app
+   * Flag to determine if the network is private or not, used to inform partners to hide the network in their app.
+   * Omitted when false.
    */
-  private: boolean;
+  private?: boolean;
   /**
    * Type of the network, testnet or mainnet
    */
   network_type: NetworkType;
+  /**
+   * Configuration inputs submitted by the customer during installation.
+   * Omitted when the integration has no configuration.
+   */
+  arguments?: {
+    [key: string]: string;
+  };
 };
 
 type IntegrationEventInstalledOptimism = IntegrationEventInstalledBase & {
@@ -248,20 +279,23 @@ type IntegrationEventInstalled =
   | IntegrationEventInstalledOptimism
   | IntegrationEventInstalledArbitrum;
 
+/**
+ * Reserved in the schema; Conduit does not currently emit this event.
+ */
 type IntegrationEventNetworkUpdated = IntegrationEventBase & {
   event: (typeof EventType)["NETWORK_UPDATED"];
   /**
-   * The URL of the network's logo
+   * The URL of the network's logo. Omitted when not set.
    */
-  logo_url: string;
+  logo_url?: string;
   /**
-   * The URL of the network's icon
+   * The URL of the network's icon. Omitted when not set.
    */
-  icon_url: string;
+  icon_url?: string;
   /**
-   * The brand color of the network.
+   * The brand color of the network. Omitted when not set.
    */
-  brand_color: string;
+  brand_color?: string;
 };
 
 type IntegrationEventUninstalled = IntegrationEventBase & {
