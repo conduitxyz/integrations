@@ -1,3 +1,10 @@
 # Supply-chain safety: don't resolve package versions published
 # less than 7 days ago (10080 minutes). Requires pnpm >= 10.16.
 minimumReleaseAge: 10080
+
+# Force patched versions of vulnerable transitive dev dependencies
+# (pulled in via @changesets/cli). Scoped so js-yaml@4 / picomatch@4
+# consumers are unaffected.
+overrides:
+  js-yaml@<3.15.0: 3.15.0
+  picomatch@<2.3.2: 2.3.2
