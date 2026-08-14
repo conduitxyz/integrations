@@ -1,5 +1,11 @@
 # @conduitxyz/integrations
 
+## 1.2.0
+
+### Minor Changes
+
+- eca8c87: Add `chain_id` to `UNINSTALLED` and `NETWORK_DELETED` events. These events now include the network's chain ID, matching `INSTALLED`.
+
 ## 1.1.0
 
 ### Minor Changes
