@@ -120,6 +120,9 @@ export function constructIntegrationEventResponse(
 export const EventType = {
   INSTALLED: "INSTALLED",
   UNINSTALLED: "UNINSTALLED",
+  /**
+   * Reserved in the schema; Conduit does not currently emit this event.
+   */
   NETWORK_UPDATED: "NETWORK_UPDATED",
   NETWORK_DELETED: "NETWORK_DELETED",
 } as const;
@@ -300,10 +303,18 @@ type IntegrationEventNetworkUpdated = IntegrationEventBase & {
 
 type IntegrationEventUninstalled = IntegrationEventBase & {
   event: (typeof EventType)["UNINSTALLED"];
+  /**
+   * An identifier for the blockchain.
+   */
+  chain_id: string;
 };
 
 type IntegrationEventNetworkDeleted = IntegrationEventBase & {
   event: (typeof EventType)["NETWORK_DELETED"];
+  /**
+   * An identifier for the blockchain.
+   */
+  chain_id: string;
 };
 
 export type IntegrationEvent =
